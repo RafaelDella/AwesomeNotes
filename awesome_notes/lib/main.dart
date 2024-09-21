@@ -1,5 +1,5 @@
-import 'package:awesome_notes/constants.dart';
-import 'package:awesome_notes/main_page.dart';
+import 'package:awesome_notes/core/constants.dart';
+import 'package:awesome_notes/Pages/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: background,
         appBarTheme: Theme.of(context).appBarTheme.copyWith(
               backgroundColor: Colors.transparent,
-              titleTextStyle: TextStyle(
+              titleTextStyle: const TextStyle(
                   color: primary,
                   fontSize: 32,
                   fontFamily: 'Fredoka',
