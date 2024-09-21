@@ -1,3 +1,6 @@
+import 'package:awesome_notes/Pages/new_or_edit_note_page.dart';
+import 'package:awesome_notes/Widgets/NoteIconButtonOutlined.dart';
+import 'package:awesome_notes/Widgets/note_icon_button.dart';
 import 'package:awesome_notes/core/constants.dart';
 import 'package:awesome_notes/Widgets/note_fab.dart';
 import 'package:awesome_notes/Widgets/note_grid.dart';
@@ -28,21 +31,22 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: const Text("Awesome Notes 📝"),
         actions: [
-          IconButton(
+          NoteIconButtonOutlined(
+            icon: FontAwesomeIcons.rightFromBracket,
             onPressed: () {},
-            icon: const FaIcon(FontAwesomeIcons.rightFromBracket),
-            style: IconButton.styleFrom(
-                backgroundColor: primary,
-                foregroundColor: white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    side: const BorderSide(
-                      color: black,
-                    ))),
           ),
         ],
       ),
-      floatingActionButton: const NoteFab(),
+      floatingActionButton: NoteFab(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => NewOrEditNotePage(),
+            ),
+          );
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -52,20 +56,16 @@ class _MainPageState extends State<MainPage> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(
                 children: [
-                  IconButton(
+                  NoteIconButton(
+                    icon: isDescending
+                        ? FontAwesomeIcons.arrowDown
+                        : FontAwesomeIcons.arrowUp,
+                    size: 18,
                     onPressed: () {
                       setState(() {
                         isDescending = !isDescending;
                       });
                     },
-                    icon: FaIcon(isDescending ? FontAwesomeIcons.arrowDown : FontAwesomeIcons.arrowUp),
-                    padding: EdgeInsets.zero,
-                    visualDensity: VisualDensity.compact,
-                    constraints: const BoxConstraints(),
-                    style: IconButton.styleFrom(
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                    iconSize: 20,
-                    color: gray700,
                   ),
                   const SizedBox(width: 16),
                   DropdownButton<String>(
@@ -106,23 +106,16 @@ class _MainPageState extends State<MainPage> {
                     },
                   ),
                   const Spacer(),
-                  IconButton(
+                  NoteIconButton(
+                    icon: isGrid
+                        ? FontAwesomeIcons.tableCellsLarge
+                        : FontAwesomeIcons.bars,
+                    size: 18,
                     onPressed: () {
                       setState(() {
                         isGrid = !isGrid;
                       });
                     },
-                    icon: FaIcon( 
-                      isGrid
-                        ? FontAwesomeIcons.tableCellsLarge 
-                        : FontAwesomeIcons.bars),
-                    padding: EdgeInsets.zero,
-                    visualDensity: VisualDensity.compact,
-                    constraints: const BoxConstraints(),
-                    style: IconButton.styleFrom(
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                    iconSize: 20,
-                    color: gray700,
                   ),
                 ],
               ),
@@ -136,4 +129,3 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
-
