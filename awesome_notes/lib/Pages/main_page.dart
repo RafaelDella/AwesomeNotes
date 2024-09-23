@@ -1,5 +1,5 @@
 import 'package:awesome_notes/Pages/new_or_edit_note_page.dart';
-import 'package:awesome_notes/Widgets/NoteIconButtonOutlined.dart';
+import 'package:awesome_notes/Widgets/note_icon_button_outlined.dart';
 import 'package:awesome_notes/Widgets/note_icon_button.dart';
 import 'package:awesome_notes/core/constants.dart';
 import 'package:awesome_notes/Widgets/note_fab.dart';
@@ -42,7 +42,7 @@ class _MainPageState extends State<MainPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => NewOrEditNotePage(),
+              builder: (context) => const NewOrEditNotePage(),
             ),
           );
         },
