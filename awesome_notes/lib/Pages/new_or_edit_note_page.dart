@@ -36,31 +36,34 @@ class _NewOrEditNotePageState extends State<NewOrEditNotePage> {
             const Row(
               children: [
                 Expanded(flex: 3, child: Text("Last Modified", style: TextStyle(fontWeight: FontWeight.bold, color: gray500),)), 
-                Expanded(flex: 5, child: Text("13 December 2023, 14:51 PM", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),))
+                Expanded(flex: 5, child: Text("13 December 2023, 14:51 PM", style: TextStyle(fontWeight: FontWeight.bold),))
                 ]
               ),
               
             const Row(
               children: [
                 Expanded(flex: 3, child: Text("Created", style: TextStyle(fontWeight: FontWeight.bold, color: gray500))), 
-                Expanded(flex: 5, child: Text("07 December 2023, 03:35 PM", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)))
+                Expanded(flex: 5, child: Text("07 December 2023, 03:35 PM", style: TextStyle(fontWeight: FontWeight.bold)))
                 ]
               ),
               
             Row(
               children: [
-                Row(
-                  children: [
-                    const Text("Created", style: TextStyle(fontWeight: FontWeight.bold, color: gray500)),
-                    NoteIconButton(icon: FontAwesomeIcons.circlePlus, size: 18, onPressed: (){})
-                  ],
+                Expanded(
+                  flex: 3,
+                  child: Row(
+                    children: [
+                      const Text("Created", style: TextStyle(fontWeight: FontWeight.bold, color: gray500)),
+                      NoteIconButton(icon: FontAwesomeIcons.circlePlus, size: 18, onPressed: (){})
+                    ],
+                  ),
                 ),
-                const Text("No tags added", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))
+                Expanded(flex: 5,child: const Text("No tags added", style: TextStyle(fontWeight: FontWeight.bold)))
                 ]
               ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: const Divider(color: gray500, thickness: 2,),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: Divider(color: gray500, thickness: 2,),
             ),
             const TextField(decoration: InputDecoration(hintText: "Note here..."),
             ),
